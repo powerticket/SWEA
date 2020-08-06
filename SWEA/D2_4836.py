@@ -1,8 +1,10 @@
-T int(input())
-
+T = int(input())
+grid = [[[0] * 10] * 10] * 2
 for t in range(1, T+1):
     N = int(input())
-    L = [list(map(int, input().split())) for i in range(N)]
-    C = [[0] * 10] * 10
-    for l in range(len(L)):
-        
+    L = list(map(int, input().split()))
+    if L[4] == 1:
+        for i in range(L)
+        pass
+    else:
+        pass
