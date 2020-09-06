@@ -10,7 +10,6 @@ def bfs(r, c):
     stack = []
     stack.append((r, c))
     visited[r][c] = 1
-    total = 0
     while stack:
         r, c = stack.pop(0)
         cnt = visited[r][c]
