@@ -11,20 +11,23 @@ BBBBBBBBBWBWB
 WWWWWWWWWWBWB
 WWWWWWWWWWBWB
 '''
+def check(r, c, color):
+    global cnt
+    visited[r][c] = 1
+    if color != board[r][c]:
+        cnt += 1
+    if color == 'W':
+        color = 'B'
+    else:
+        color = 'W'
+    if r < N-1 and not visited[r+1][c]:
+        check(r+1, c, color)
+    if c < M-1 and not visited[r][c+1]:
+        check(r, c+1, color)
+
 N, M = map(int, input().split())
-L = [input() for _ in range(N)]
-fix = [[0] * (M-7) for _ in range(N-7)]
-
-for i in range(N):
-    for j in range(M):
-        if L[i][j] == 'W':
-            L[i][j] = 1
-        else:
-            L[i][j] = -1
-print(L)
-
-# for i in range(N-7):
-#     for j in range(M-7):
-#         for k in range(8):
-#             for l in range(8):
-#                 chess[i+k][j+l]
+board = [input() for _ in range(N)]
+visited = [[0] * M for _ in range(N)]
+cnt = 0
+check(0, 0, 'W')
+print(cnt)
