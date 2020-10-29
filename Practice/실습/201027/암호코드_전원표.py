@@ -26,6 +26,7 @@ for t in range(1, T+1):
     base2_arr = []
     candidate = []
     code_set = set()
+    # change base
     for a in arr:
         base2 = ''
         for char in a:
@@ -38,8 +39,11 @@ for t in range(1, T+1):
             if row[i] == '1':
                 j = 1
                 while 1:
-                    c = row[i-(7*j-1):i+1:j]
-                    if c in CODE:
+                    c1 = row[i-(7*j-1):i+1:j]
+                    i -= 7 * j
+                    c2 = row[i-(7*j-1):i+1:j]
+                    i += 7 * j
+                    if c1 in CODE and c2 in CODE:
                         break
                     j += 1
                 candidate.append(row[i-(56*j-1):i+1:j])
