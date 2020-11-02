@@ -1,4 +1,8 @@
-def combination(n):
+import sys
+sys.stdin = open('sample_input.txt')
+
+
+def permutation(n):
     if n == token_len:
         global max_result, min_result
         result = number[0]
@@ -16,9 +20,13 @@ def combination(n):
         if result < min_result:
             min_result = result
         return
+    perm = int(''.join(map(str, token_arr)))
+    if perm in visited[n]:
+        return
+    visited[n].add(perm)
     for i in range(n, token_len):
         token_arr[i], token_arr[n] = token_arr[n], token_arr[i]
-        combination(n+1)
+        permutation(n+1)
         token_arr[i], token_arr[n] = token_arr[n], token_arr[i]
 
 
@@ -32,18 +40,9 @@ for t in range(1, T+1):
         for _ in range(num):
             token_arr.append(idx)
     token_len = len(token_arr)
-    max_result = 0
+    visited = [set() for _ in range(token_len)]
+    max_result = -0xffffffff
     min_result = 0xffffffff
-    combination(0)
+    permutation(0)
     result = max_result - min_result
     print('#{} {}'.format(t, result))
-
-"""
-2
-5
-2 1 0 1
-3 5 3 7 9
-6
-4 1 0 0
-1 2 3 4 5 6
-"""
