@@ -1,8 +1,5 @@
 def merge(left, right):
     result = []
-    if left[-1] > right[-1]:
-        global count
-        count += 1
     while left or right:
         if left and right:
             if left[0] <= right[0]:
@@ -13,7 +10,7 @@ def merge(left, right):
             result.append(left.pop(0))
         else:
             result.append(right.pop(0))
-    return result
+    return result     
 
 
 def merge_sort(arr):
@@ -23,14 +20,11 @@ def merge_sort(arr):
     mid = len_arr // 2
     left = arr[:mid]
     right = arr[mid:]
-    return merge(merge_sort(left), merge_sort(right))
+    merge_left = merge_sort(left)
+    merge_right = merge_sort(right)
+    return merge(merge_left, merge_right)
 
 
-T = int(input())
-for t in range(1, T+1):
-    N = int(input())
-    arr = list(map(int, input().split()))
-    mid = N // 2
-    count = 0
-    result = merge_sort(arr)
-    print('#{} {} {}'.format(t, result[mid], count))
+arr = [69, 10, 30, 2, 16, 8, 31, 22]
+arr_result = merge_sort(arr)
+print(arr_result)

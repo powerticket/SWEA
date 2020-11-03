@@ -20,7 +20,10 @@ def quick_sort(arr, low, high):
         quick_sort(arr, pt+1, high)
 
 
-arr = [5, 2, 4, 1, 3, 9]
-print(arr)
-quick_sort(arr, 0, 4)
-print(arr)
+T = int(input())
+for t in range(1, T+1):
+    N = int(input())
+    arr = list(map(int, input().split()))
+    len_arr = len(arr)
+    quick_sort(arr, 0, len_arr-1)
+    print('#{} {}'.format(t, arr[len_arr//2]))
