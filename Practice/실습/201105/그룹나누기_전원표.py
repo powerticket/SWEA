@@ -19,13 +19,13 @@ for t in range(1, T+1):
     N, M = map(int, input().split())
     arr = list(map(int, input().split()))
     team = list(range(N+1))
+    count = [0] * (N+1)
     for i in range(M):
         a, b = arr[2*i], arr[2*i+1]
         unionTeam(team, a, b)
-    result = 1
-    for i in range(N):
+    for i in range(N+1):
         findTeam(team, i)
-    for i in range(1, N):
-        if team[i] != team[i+1]:
-            result += 1
+    for i in range(1, N+1):
+        count[team[i]] = 1
+    result = sum(count)
     print('#{} {}'.format(t, result))
