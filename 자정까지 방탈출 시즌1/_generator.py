@@ -19,7 +19,7 @@ if request.status_code == 200:
     f.close()
     f = open(f'{month}{day}_{problem_number}.py', 'w', encoding='utf-8')
     f.write(f"""import sys
-sys.stdin = open('test.txt', 'r')
+sys.stdin = open('{month}{day}_{problem_number}.txt', 'r')
 
 # {month}/{day}
 # {problem_number} {problem_title}
